@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple SPA</title>
+</head>
+<body>
+    <h1>Hello, this is a simple SPA!</h1>
+    <button onclick="loadPage('home')">Home</button>
+    <button onclick="loadPage('settings')">Settings</button>
+    <button onclick="loadPage('contacts')">Contacts</button>
+    <div id="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </div>
+
+    <script>
+        // Function to load content dynamically based on button click
+        function loadPage(page) {
+            fetch(`${page}.html`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('main-content').innerHTML = data;
+                });
+        }
+    </script>
+</body>
+</html>
